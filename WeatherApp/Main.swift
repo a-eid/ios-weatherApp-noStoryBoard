@@ -2,6 +2,7 @@ import UIKit
 
 class Main: UIViewController{
   let wCell = "WeatherCell"
+  let data = [cellData]()
   
   let topView:UIView = {
     let v = UIView()
@@ -62,6 +63,7 @@ class Main: UIViewController{
   override func viewDidLoad() {
     super.viewDidLoad()
     setupViews()
+    networkCalls()
   }
   
   func setupViews(){
@@ -87,9 +89,13 @@ extension Main{
     dateLabel.anchorEdges(top: topView.safeAreaLayoutGuide.topAnchor, tConst: 16, left: topView.safeAreaLayoutGuide.leftAnchor, lConst: 16, right: nil, rConst: 0, bottom: nil, bConst: 0)
     
     locationLabel.anchorEdges(top: nil, tConst: 0, left: topView.safeAreaLayoutGuide.leftAnchor, lConst: 16, right: nil , rConst: 0 , bottom: topView.safeAreaLayoutGuide.bottomAnchor, bConst: -16)
+    
     locationLabel.anchorWHC(width: view.frame.width / 2, height: nil)
+    
     conditionLabel.anchorEdges(top: nil, tConst: 0, left: locationLabel.rightAnchor, lConst: 16 , right: topView.rightAnchor, rConst: -16, bottom: topView.bottomAnchor, bConst: -16)
+    
     tempLabel.anchorEdges(top: dateLabel.topAnchor, tConst: 32, left: topView.leftAnchor, lConst: 16, right: nil, rConst: 0, bottom: locationLabel.topAnchor, bConst: -16)
+    
     conditionImg.anchorEdges(top: topView.topAnchor, tConst: 32, left: nil, lConst: 0, right: topView.rightAnchor, rConst: -16, bottom: nil, bConst: 0)
   }
 
@@ -120,4 +126,20 @@ extension Main: UITableViewDelegate, UITableViewDataSource {
     let cell = tableView.dequeueReusableCell(withIdentifier: wCell) as! WeatherCell
     return cell
   }
+}
+
+extension Main {
+  func networkCalls(){
+    guard let url = URL(string: "http://localhost:3000/data") else {print("failed"); return}
+    URLSession.shared.dataTask(with: url) { (data, resp, error) in
+      print("here")
+    }.resume()
+  }
+}
+
+struct cellData: Codable {
+  var high: String
+  var low: String
+  var condition: String
+  var day: String
 }

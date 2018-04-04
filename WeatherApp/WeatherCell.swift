@@ -51,7 +51,6 @@ class WeatherCell: UITableViewCell {
     addSubview(lowDegreeLabel)
     
     
-    conditionImg.anchorCenter(x: nil, y: centerYAnchor)
     conditionImg.anchorWHC(width: 70, height: 70)
     conditionImg.anchorEdges(top: topAnchor, tConst: 15, left: leftAnchor, lConst: 10, right: nil, rConst: 0, bottom: nil, bConst: 0)
     
