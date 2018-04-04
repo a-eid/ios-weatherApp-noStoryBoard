@@ -19,34 +19,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="2uZ-vU-6JC">
-                                <rect key="frame" x="37" y="183" width="300" height="300"/>
+                                <rect key="frame" x="112" y="258" width="150" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Scg-kG-Od1">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="145.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="70.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Partially Cloudy" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-VC-AfZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="145" height="145.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="70.5"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clouds" translatesAutoresizingMaskIntoConstraints="NO" id="xFY-fG-94p">
-                                                <rect key="frame" x="155" y="0.0" width="145" height="145.5"/>
+                                                <rect key="frame" x="80" y="0.0" width="70" height="70.5"/>
                                             </imageView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qWh-DY-0F8">
-                                        <rect key="frame" x="0.0" y="154.5" width="300" height="145.5"/>
+                                        <rect key="frame" x="0.0" y="79.5" width="150" height="70.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rain" translatesAutoresizingMaskIntoConstraints="NO" id="7RW-Qd-RVd">
-                                                <rect key="frame" x="0.0" y="0.0" width="146" height="145.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="71" height="70.5"/>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clear" translatesAutoresizingMaskIntoConstraints="NO" id="7EN-UQ-F6j">
-                                                <rect key="frame" x="154" y="0.0" width="146" height="145.5"/>
+                                                <rect key="frame" x="79" y="0.0" width="71" height="70.5"/>
                                             </imageView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="Ybd-5e-9Ng"/>
-                                    <constraint firstAttribute="width" constant="300" id="c4C-nf-KkW"/>
+                                    <constraint firstAttribute="height" constant="150" id="Ybd-5e-9Ng"/>
+                                    <constraint firstAttribute="width" constant="150" id="c4C-nf-KkW"/>
                                 </constraints>
                             </stackView>
                         </subviews>

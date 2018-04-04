@@ -4,32 +4,32 @@ import UIKit
 class WeatherCell: UITableViewCell {
   let conditionImg: UIImageView = {
     let iv = UIImageView()
-    iv.image = #imageLiteral(resourceName: "Clouds Mini")
+//    iv.image = #imageLiteral(resourceName: "Clouds Mini")
     iv.contentMode = .scaleAspectFit
     return iv
   }()
   
   let dayLabel: UILabel = {
     let l = UILabel()
-    l.text = "Wednesday"
+//    l.text = "Wednesday"
     return l
   }()
   
   let conditionLabel: UILabel = {
     let l = UILabel()
-    l.text = "Hot"
+//    l.text = "Hot"
     return l
   }()
   
   let highDegreeLabel: UILabel = {
     let l = UILabel()
-    l.text = "28°"
+//    l.text = "28°"
     return l
   }()
   
   let lowDegreeLabel: UILabel = {
     let l = UILabel()
-    l.text = "28°"
+//    l.text = "28°"
     return l
   }()
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -63,4 +63,43 @@ class WeatherCell: UITableViewCell {
 
   }
   
+  func updateViews(data: CellData){
+    conditionLabel.text = data.condition
+    dayLabel.text = data.day
+    highDegreeLabel.text = String(data.high)
+    lowDegreeLabel.text  = String(data.low)
+    
+    // either name image to match condition or do a lookup table or
+    // like here do a long if else to check for all possible cases.
+    if (data.condition.lowercased() == "cloudy") {
+      conditionImg.image = #imageLiteral(resourceName: "Clouds Mini")
+    }
+    
+  }
+  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

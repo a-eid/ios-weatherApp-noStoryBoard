@@ -2,7 +2,7 @@ import UIKit
 
 class Main: UIViewController{
   let wCell = "WeatherCell"
-  let data = [cellData]()
+  var data = [CellData]()
   
   let topView:UIView = {
     let v = UIView()
@@ -11,7 +11,7 @@ class Main: UIViewController{
   }()
   
   let dateLabel: UILabel = {
-   let l = UILabel()
+    let l = UILabel()
     l.text = "Wed 4 April 2018"
     l.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     return l
@@ -51,15 +51,15 @@ class Main: UIViewController{
   }()
   
   let weatherTable: UITableView = {
-   let tv = UITableView()
-   tv.allowsSelection = false
-   return tv
+    let tv = UITableView()
+    tv.allowsSelection = false
+    return tv
   }()
   
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupViews()
@@ -85,7 +85,7 @@ extension Main{
     topView.addSubview(conditionLabel)
     topView.addSubview(conditionImg)
     topView.addSubview(tempLabel)
-
+    
     dateLabel.anchorEdges(top: topView.safeAreaLayoutGuide.topAnchor, tConst: 16, left: topView.safeAreaLayoutGuide.leftAnchor, lConst: 16, right: nil, rConst: 0, bottom: nil, bConst: 0)
     
     locationLabel.anchorEdges(top: nil, tConst: 0, left: topView.safeAreaLayoutGuide.leftAnchor, lConst: 16, right: nil , rConst: 0 , bottom: topView.safeAreaLayoutGuide.bottomAnchor, bConst: -16)
@@ -98,7 +98,7 @@ extension Main{
     
     conditionImg.anchorEdges(top: topView.topAnchor, tConst: 32, left: nil, lConst: 0, right: topView.rightAnchor, rConst: -16, bottom: nil, bConst: 0)
   }
-
+  
 }
 
 
@@ -119,11 +119,12 @@ extension Main: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 6
+    return data.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: wCell) as! WeatherCell
+    cell.updateViews(data: data[indexPath.row])
     return cell
   }
 }
@@ -132,14 +133,24 @@ extension Main {
   func networkCalls(){
     guard let url = URL(string: "http://localhost:3000/data") else {print("failed"); return}
     URLSession.shared.dataTask(with: url) { (data, resp, error) in
-      print("here")
-    }.resume()
+      do{
+        let decoder = JSONDecoder()
+        let data =  try decoder.decode([CellData].self, from: data!)
+        self.data = data
+        DispatchQueue.main.async {
+          self.weatherTable.reloadData()
+        }
+      }catch{
+        print("failed, should handle errors here")
+      }
+      
+      }.resume()
   }
 }
 
-struct cellData: Codable {
-  var high: String
-  var low: String
+struct CellData: Codable {
+  var high: Int
+  var low: Int
   var condition: String
   var day: String
 }
