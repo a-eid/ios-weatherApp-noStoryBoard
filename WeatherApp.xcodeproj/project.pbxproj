@@ -13,6 +13,7 @@
 		213E642F2074468300A05DD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 213E642E2074468300A05DD2 /* Assets.xcassets */; };
 		213E64322074468300A05DD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 213E64302074468300A05DD2 /* LaunchScreen.storyboard */; };
 		213E643A207447A500A05DD2 /* Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213E6439207447A500A05DD2 /* Anchors.swift */; };
+		21646A732074551A00BC0CAE /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21646A722074551A00BC0CAE /* WeatherCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		213E64312074468300A05DD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		213E64332074468400A05DD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		213E6439207447A500A05DD2 /* Anchors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchors.swift; sourceTree = "<group>"; };
+		21646A722074551A00BC0CAE /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				213E64272074468300A05DD2 /* AppDelegate.swift */,
 				213E6439207447A500A05DD2 /* Anchors.swift */,
 				213E64292074468300A05DD2 /* Main.swift */,
+				21646A722074551A00BC0CAE /* WeatherCell.swift */,
 				213E642B2074468300A05DD2 /* Main.storyboard */,
 				213E642E2074468300A05DD2 /* Assets.xcassets */,
 				213E64302074468300A05DD2 /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21646A732074551A00BC0CAE /* WeatherCell.swift in Sources */,
 				213E642A2074468300A05DD2 /* Main.swift in Sources */,
 				213E64282074468300A05DD2 /* AppDelegate.swift in Sources */,
 				213E643A207447A500A05DD2 /* Anchors.swift in Sources */,

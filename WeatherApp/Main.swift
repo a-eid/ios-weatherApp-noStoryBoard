@@ -1,6 +1,8 @@
 import UIKit
 
 class Main: UIViewController{
+  let wCell = "WeatherCell"
+  
   let topView:UIView = {
     let v = UIView()
     v.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
@@ -24,7 +26,7 @@ class Main: UIViewController{
   let conditionLabel: UILabel = {
     let l = UILabel()
     l.text = "Cool"
-    l.textAlignment = .left
+    l.textAlignment = .center
     l.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     return l
   }()
@@ -38,7 +40,7 @@ class Main: UIViewController{
   
   let tempLabel: UILabel = {
     let l = UILabel()
-    l.text = "26•"
+    l.text = "26°"
     
     l.font = UIFont.boldSystemFont(ofSize: 70)
     l.textAlignment = .center
@@ -49,6 +51,7 @@ class Main: UIViewController{
   
   let weatherTable: UITableView = {
    let tv = UITableView()
+   tv.allowsSelection = false
    return tv
   }()
   
@@ -85,17 +88,10 @@ extension Main{
     
     locationLabel.anchorEdges(top: nil, tConst: 0, left: topView.safeAreaLayoutGuide.leftAnchor, lConst: 16, right: nil , rConst: 0 , bottom: topView.safeAreaLayoutGuide.bottomAnchor, bConst: -16)
     locationLabel.anchorWHC(width: view.frame.width / 2, height: nil)
-    
     conditionLabel.anchorEdges(top: nil, tConst: 0, left: locationLabel.rightAnchor, lConst: 16 , right: topView.rightAnchor, rConst: -16, bottom: topView.bottomAnchor, bConst: -16)
-    
     tempLabel.anchorEdges(top: dateLabel.topAnchor, tConst: 32, left: topView.leftAnchor, lConst: 16, right: nil, rConst: 0, bottom: locationLabel.topAnchor, bConst: -16)
-    
     conditionImg.anchorEdges(top: topView.topAnchor, tConst: 32, left: nil, lConst: 0, right: topView.rightAnchor, rConst: -16, bottom: nil, bConst: 0)
-    
-    
-
   }
-  
 
 }
 
@@ -105,6 +101,11 @@ extension Main{
 extension Main: UITableViewDelegate, UITableViewDataSource {
   
   func setupWeatherTable(){
+    weatherTable.register(WeatherCell.self, forCellReuseIdentifier: wCell)
+    weatherTable.separatorStyle = .none
+    weatherTable.rowHeight = 90
+    weatherTable.showsVerticalScrollIndicator = false
+    
     view.addSubview(weatherTable)
     weatherTable.dataSource = self
     weatherTable.delegate = self
@@ -116,6 +117,7 @@ extension Main: UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return UITableViewCell()
+    let cell = tableView.dequeueReusableCell(withIdentifier: wCell) as! WeatherCell
+    return cell
   }
 }
